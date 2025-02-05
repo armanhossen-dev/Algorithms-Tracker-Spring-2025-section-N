@@ -1,62 +1,93 @@
 #include <iostream>
+#include <queue>
 #include <string>
 using namespace std;
 
-bool prime(int n)
+vector<int> generateLuckyNums(int lim)
 {
-    if (n < 2){
-        return false;
-    }
-    if (n == 3 || n == 2){ // 2,3 then prime num os ture
-        return true;
-    }
-    if (n % 2 == 0 || n % 3 == 0){
-        return false; // not prime, they are multiples of 2 and 3
-    }
+    vector<int> luckyNums;
+    queue<int> q;
+    q.push(4);
+    q.push(7);
 
-    // checking factors from 5 to sqrt(n)
+    while (!q.empty())
+    {
+        int num = q.front();
+        q.pop();
+        if (num > lim)
+            break;
+
+        // generate next lucky numbers by appending 4 and 7
+        if (num * 10 + 4 <= lim)
+            q.push(num * 10 + 4);
+        if (num * 10 + 7 <= lim)
+            q.push(num * 10 + 7);
+    }
+    return luckyNums;
+}
+
+// function to check if a num almost lucky by dividing that test num by dividing with the element of list
+bool almostLucky(int testNum, const vector<int>& luckyNums)
+{
+    for (int element : luckyNums)
+    {
+        if (testNum % element == 0)
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 int main()
 {
+    bool ans = true; //True if no answer is shown
     int num;
     cin >> num;
-    string val = to_string(num);
-    // cout << "num = " << num << '\n'
-    //      << "val = " << val << '\n';
-    if (num % 4 == 0 || num % 7 == 0)
+    if (1 <= num <= 1000)
     {
-        cout << "YES\n";
-    }
-    else
-    {
-        int size = val.length();
-        int len = size;
-        int cnt = 0;
-        for (int i = 0; i < size; i++)
+
+        string val = to_string(num);
+        // cout << "num = " << num << '\n'
+        //      << "val = " << val << '\n';
+        if (num % 4 == 0 || num % 7 == 0)
         {
-            if (val[i] == '4' || val[i] == '7')
+            cout << "YES\n";
+            ans = false;
+            return 0;
+        }
+        else
+        {
+            int size = val.length();
+            int len = size;
+            int cnt = 0;
+            for (int i = 0; i < size; i++)
             {
-                cnt++;
+                if (val[i] == '4' || val[i] == '7')
+                {
+                    cnt++;
+                }
+            }
+            if (cnt == len)
+            {
+                cout << "YES\n";
+                ans = false;
+            }   
+        }
+        if (ans) //True if no answer is shown
+        {
+            // genrate lucky num up  to the limit
+            vector<int> luckyNums = generateLuckyNums(num);
+            if (almostLucky(num, luckyNums))
+            {
+                cout << "YES\n";
+            }
+            else
+            {
+                cout << "NO\n";
             }
         }
-        if (cnt == len)
-        {
-            cout << "YES\n";
-        }
-        else
-        {
-            cout << "NO\n";
-        }
-
-        if (prime(num))
-        {
-            cout << "YES\n";
-        }
-        else
-        {
-            cout << "NO\n";
-        }
     }
+
     return 0;
 }
