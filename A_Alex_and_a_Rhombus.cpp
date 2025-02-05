@@ -13,4 +13,6 @@ int main(){
     cout << add <<endl;
     return 0;
 }
-//A_Alex_and_a_Rhombus.cpp
+//https://vjudge.net/contest/356290#problem/A
+//A - Alex and a Rhombus (Adhoc 01) 
+//https://codeforces.com/problemset/problem/1180/A

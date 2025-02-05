@@ -1,3 +1,6 @@
+// J - Next Round (Linear Search 04)
+// https://vjudge.net/contest/356290#problem/J
+
 #include <stdio.h>
 int main()
 {

@@ -1,3 +1,6 @@
+//C - Lift (Adhoc 03) 
+//https://vjudge.net/contest/356290#problem/C
+
 #include <iostream>
 #include<vector>
 

@@ -1,3 +1,6 @@
+//R - Exact Sum (Binary Search 03)
+//https://vjudge.net/contest/356290#problem/R
+
 #include <iostream>
 #include <algorithm>
 #include <vector>

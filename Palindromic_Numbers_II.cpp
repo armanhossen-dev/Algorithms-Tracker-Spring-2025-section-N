@@ -1,4 +1,6 @@
 //https://lightoj.com/problem/palindromic-numbers-ii
+//B - Palindromic Numbers (II) (Adhoc 02) 
+
 #include<iostream>
 #include<cstring>
 #include <vector>  // Include vector library
